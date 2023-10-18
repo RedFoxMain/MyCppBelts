@@ -1,19 +1,21 @@
 #include <iostream>
-#include <cmath>
+#include <algorithm>
 using namespace std;
 
-void binary(int bin_num){
-	string num = to_string(bin_num);
-	int p = num.length()-1;
-	int res = 0;
-	for(int i = 0; i < num.size(); i++){
-		res += (num[i]-'0') * pow(2, p);
-		p--;
+void binary(int bin_num)
+{
+	string str;
+	while (bin_num > 0)
+	{
+		int ost = bin_num % 2;
+		str += to_string(ost);
+		bin_num = bin_num / 2;
 	}
-	cout << res;
+	reverse(str.begin(), str.end());
+	cout << str << endl;
 }
 
 int main(int argc, char *argv[])
 {
-	binary(10110110);
+	binary(182);
 }
