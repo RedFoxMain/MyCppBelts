@@ -69,43 +69,44 @@ class Rational
 		return c;
 	}
 	// overload operator ==
-	friend bool operator==(Rational a, Rational b){
-		return a.Numerator()==b.Numerator() && a.Denominator()==b.Denominator();
+	friend bool operator==(Rational &a, Rational &b){
+		return a.numerator==b.numerator && a.Denominator()==b.Denominator();
 	}
 	// overload operator !=
-	friend bool operator!=(Rational a, Rational b){
-		return a.Numerator()!=b.Numerator() || a.Denominator()!=b.Denominator();
+	friend bool operator!=(Rational &a, Rational &b){
+		return a.numerator!=b.numerator || a.Denominator()!=b.Denominator();
 	}
 	// overload operator <<
-	friend void operator<<(ostream &os, Rational a){
-		os << a.Numerator() << "/" << a.Denominator() << endl;
+	friend ostream& operator<<(ostream &os, Rational &a){
+		os << a.numerator << "/" << a.denominator << endl;
+		return os;
 	}
 	// Sum
-	static double sum(Rational &a, Rational &b)
+	static double Add(Rational &a, Rational &b)
 	{
-		return double(a.Numerator()) / double(a.Denominator())+double(b.Numerator())/double(b.Denominator());
+		return double(a.numerator) / double(a.denominator)+double(b.numerator)/double(b.denominator);
 	}
 	// Sub
-	static double sub(Rational &a, Rational &b)
+	static double Subdivide(Rational &a, Rational &b)
 	{
-		return double(a.Numerator()) / double(a.Denominator())-double(b.Numerator())/double(b.Denominator());
+		return double(a.numerator) / double(a.denominator)-double(b.numerator)/double(b.denominator);
 	}
 	// Multiply
-	static double mul(Rational &a, Rational &b)
+	static double Multiply(Rational &a, Rational &b)
 	{
-		return double(a.Numerator()*b.Numerator())/double(b.Denominator()*a.Denominator());
+		return double(a.numerator*b.Numerator())/double(b.denominator*a.denominator);
 	}
 	// Divide
-	static double div(Rational &a, Rational &b)
+	static double Divide(Rational &a, Rational &b)
 	{
-		return double(a.Numerator()*b.Denominator())/double(b.Numerator()*a.Denominator());
+		return double(a.numerator*b.denominator)/double(b.numerator*a.denominator);
 	}
 	// equal
-	static bool Equal(Rational a, Rational b){
+	static bool Equal(Rational &a, Rational &b){
 		return a==b;
 	}
 	// not equal
-	static bool NotEqual(Rational a, Rational b){
+	static bool NotEqual(Rational &a, Rational &b){
 		return a!=b;
 	}
 	// Reduce fractals
@@ -120,10 +121,10 @@ int main(int argc, char *argv[])
 	Rational fraction2(1, 2);
 	//cout << fraction.Numerator() << endl;
 	//cout << fraction.Denominator() << endl;
-	cout << "Сложение: "<< Rational::sum(fraction, fraction2) << endl;
-	cout << "Вычитание: " << Rational::sub(fraction, fraction2) << endl;
-	cout << "Умножение: " << Rational::Reduce(Rational::mul(fraction, fraction2)) << endl;
-	cout << "Деление: "<< Rational::div(fraction, fraction2) << endl;
+	cout << "Сложение: "<< Rational::Add(fraction, fraction2) << endl;
+	cout << "Вычитание: " << Rational::Subdivide(fraction, fraction2) << endl;
+	cout << "Умножение: " << Rational::Reduce(Rational::Multiply(fraction, fraction2)) << endl;
+	cout << "Деление: "<< Rational::Divide(fraction, fraction2) << endl;
 	cout << "Равны: "<< Rational::Equal(fraction, fraction2) << endl;
 	cout << "Не равны: "<< Rational::NotEqual(fraction, fraction2) << endl;
 	
