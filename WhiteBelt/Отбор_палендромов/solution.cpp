@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
 		cout << "Кол-во слов не должно быть болше 100";
 	}
 	cout << "Желаемая длина: ";
-    cin >> len;
+        cin >> len;
 	vector<string> words(unique.begin(), unique.end());
 	for(const auto el: PalindromFilter(words, len)){
 		cout << el << endl;
