@@ -11,5 +11,7 @@ int factorial(int N){
 
 int main(int argc, char *argv[])
 {
-	cout << factorial(5);
+	int N;
+	cin >> N;
+	cout << factorial(N);
 }
