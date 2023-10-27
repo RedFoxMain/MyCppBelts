@@ -3,6 +3,7 @@
 для vector элементы нужно возвести в квадрат;
 для map в квадрат нужно возвести только значения, но не ключи;
 для pair в квадрат нужно возвести каждый элемент пары.
+```
 // Пример вызова функции
 vector<int> v = {1, 2, 3};
 cout << "vector:";
@@ -19,6 +20,7 @@ cout << "map of pairs:" << endl;
 for (const auto& x : Sqr(map_of_pairs)) {
   cout << x.first << ' ' << x.second.first << ' ' << x.second.second << endl;
 }
+```
 Код выше должен вывести
 
 vector: 1 4 9
