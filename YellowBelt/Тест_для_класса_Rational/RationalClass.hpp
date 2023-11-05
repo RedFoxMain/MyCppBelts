@@ -43,7 +43,7 @@ class Rational
 
 	int Denominator()
 	{
-		return denominator/NOD(numerator, denominator);
+		return denominator/NOD(denominator, numerator);
 	}
 	int NOD(int a, int b)
 	{
@@ -58,40 +58,32 @@ class Rational
 	friend Rational operator+(Rational &a, Rational &b)
 	{
 		Rational c;
-		c.numerator = a.numerator + b.numerator;
-		c.denominator = a.denominator + b.denominator;
+		c.numerator = (a+b).Numerator();
+		c.denominator = (a+b).Denominator();
 		return c;
 	}
 	// overload operator -
 	friend Rational operator-(Rational &a, Rational &b)
 	{
 		Rational c;
-		c.numerator = a.numerator - b.numerator;
-		c.denominator = a.denominator - b.denominator;
+		c.numerator = (a-b).Numerator();
+		c.denominator = (a-b).Denominator();
 		return c;
 	}
 	// overload operator *
 	friend Rational operator*(Rational &a, Rational &b)
 	{
 		Rational c;
-		c.numerator = a.numerator * b.numerator;
-		c.denominator = a.denominator * b.denominator;
+		c.numerator = (a*b).Numerator();
+		c.denominator = (a*b).Denominator();
 		return c;
 	}
 	// overload operator /
 	friend Rational operator/(Rational &a, Rational &b)
 	{
 		Rational c;
-		c.numerator = a.numerator / b.numerator;
-		c.denominator = a.denominator / b.denominator;
-		return c;
-	}
-	// overload operator %
-	friend Rational operator%(Rational &a, Rational &b)
-	{
-		Rational c;
-		c.numerator = a.numerator % b.numerator;
-		c.denominator = a.denominator % b.denominator;
+		c.numerator = (a/b).Numerator();
+		c.denominator = (a/b).Denominator();
 		return c;
 	}
 	// overload operator ==
@@ -107,7 +99,7 @@ class Rational
 	// overload operator <<
 	friend ostream &operator<<(ostream &os, Rational &a)
 	{
-		os << a.numerator << "/" << a.denominator << endl;
+		os << a.Numerator() << "/" << a.Denominator() << endl;
 		return os;
 	}
 	// Sum
