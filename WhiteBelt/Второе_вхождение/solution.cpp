@@ -1,23 +1,20 @@
-#include <iostream> 
-#include <vector>
+#include <iostream>
 
 using namespace std;
 
-int find_f(string text, char symb){
-	int target = text.find(symb);
-	if(target != -1){
-		return text.find(symb, target+1);
-	}else{
-		return -2;
-	}
+// второе вхождение f
+int find_symbol(string text, char symb){
+        // если в тексте присутвует f мы возьмеём её позицию и от неё пробуем найти вторую f есои не нпходим возвращаем -1 если нет f вообще -2
+        int target = (text.find(symb) != string::npos) ? text.find(symb, text.find(symb)+1) : -2;
+		return target;
 }
 
 int main(int argc, char *argv[])
 {
-	string letter = "informative film";
-	string letter2 = "film";
-	string letter3 = "test";
-	cout << find_f(letter, 'f') << endl;
-	cout << find_f(letter2, 'f') << endl;
-	cout << find_f(letter3, 'f') << endl;
+        string letter = "informative film";
+        string letter2 = "film";
+        string letter3 = "test";
+        cout << find_symbol(letter, 'f') << endl;
+        cout << find_symbol(letter2, 'f') << endl;
+        cout << find_symbol(letter3, 'f') << endl;
 }
