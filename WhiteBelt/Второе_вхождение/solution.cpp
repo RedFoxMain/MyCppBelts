@@ -6,7 +6,7 @@ using namespace std;
 int find_symbol(string text, char symb){
         // если в тексте присутвует f мы возьмеём её позицию и от неё пробуем найти вторую f есои не нпходим возвращаем -1 если нет f вообще -2
         int target = (text.find(symb) != string::npos) ? text.find(symb, text.find(symb)+1) : -2;
-return target;
+    return target;
 }
 
 int main(int argc, char *argv[])
