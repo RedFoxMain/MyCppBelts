@@ -11,7 +11,7 @@ void RemoveDuplicates(vector<T>& elements){
 
 int main(int argc, char *argv[])
 {
-	  vector<int> v1 = {6, 4, 7, 6, 4, 4, 0, 1};
+	 vector<int> v1 = {6, 4, 7, 6, 4, 4, 0, 1};
     RemoveDuplicates(v1);
     for (int x : v1) {
       cout << x << " ";
