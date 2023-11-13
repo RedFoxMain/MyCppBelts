@@ -1,5 +1,5 @@
 В этой задаче вам необходимо вычислить различные демографические показатели для группы людей. Человек представляется структурой Person:
-```
+```cpp
 struct Person {
   int age;  // возраст
   Gender gender;  // пол
@@ -7,7 +7,7 @@ struct Person {
 };
 ```
 Тип Gender определён следующим образом:
-```
+```cpp
 enum class Gender {
   FEMALE,
   MALE
@@ -24,7 +24,7 @@ enum class Gender {
 все занятые мужчины.
 Все 7 чисел нужно вывести в строгом соответствии с форматом (см. пример).
 ```
-```
+```cpp
 void PrintStats(vector<Person> persons);
 ```
 Принимая вектор по значению (а не по константной ссылке), вы получаете возможность модифицировать его копию произвольным образом и тем самым проще произвести вычисления.
@@ -34,7 +34,7 @@ void PrintStats(vector<Person> persons);
 
 Вычисление медианного возраста
 Для вычисления медианного возраста группы людей вы должны использовать функцию ComputeMedianAge:
-```
+```cpp
 template <typename InputIt>
 int ComputeMedianAge(InputIt range_begin, InputIt range_end);
 ```
@@ -43,7 +43,7 @@ int ComputeMedianAge(InputIt range_begin, InputIt range_end);
 Функцию ComputeMedianAge можно вызвать и для пустого набора людей: её результат в этом случае и нужно считать медианным возрастом пустого набора людей.
 
 Пример кода
-```
+```cpp
 // Это пример функции, его не нужно отправлять вместе с функцией PrintStats
 template <typename InputIt>
 int ComputeMedianAge(InputIt range_begin, InputIt range_end) {
