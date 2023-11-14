@@ -1,5 +1,5 @@
 Дан следующий код:
-```
+```cpp
 #include <iostream>
 
 using namespace std;
