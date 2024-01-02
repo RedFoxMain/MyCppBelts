@@ -1,25 +1,20 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
 
 using namespace std;
 
+vector<int> Reversed(const vector<int>& vec){
+        vector<int> reversed;
+        for(int i = vec.size()-1; i>=0; --i){
+                reversed.push_back(vec[i]);
+        }
+        return reversed;
+}
+
 int main(int argc, char *argv[])
 {
-        int Q,k;
-        vector<int> nums;
-
-        cin >> Q;
-        for(int i = 0; i < Q; i++){
-                cin >> k;
-                nums.push_back(k);
-        }
-
-        sort(nums.begin(), nums.end(), [](int &a, int &b){
-        	return abs(a) < abs(b);
-        });
-
-        for(int el: nums){
-                cout << el << " ";
+        vector<int> vec = {1,2,3,4};
+        for(int element: Reversed(vec)){
+                cout << element << " ";
         }
 }
