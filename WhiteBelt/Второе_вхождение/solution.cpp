@@ -10,8 +10,7 @@ int find_symbol(const std::string& text, const char& symb){
 	return text.find(symb, position_of_first_symbol + 1);
 }
 
-int main()
-{
+int main(){
         std::string letter = "informative film";
         std::string letter2 = "film";
         std::string letter3 = "test";
