@@ -1,74 +1,37 @@
 #include <iostream>
 #include <map>
-#include <vector>
+#include <set>
 using namespace std;
-// month
-int next(int &current)
-{
-	map<int, int> current_mon = {
-		{1, 31}, {2, 28}, {3, 31}, {4, 30}, {5, 31}, {6, 30}, {7, 31}, {8, 31}, {9, 30}, {10, 31}, {11, 30}, {12, 31}};
-	return current_mon.at(current);
+
+using Notes = std::map<int, std::set<std::string>>;
+using Months = map<int, int>;
+
+int next(int &current){
+        Months current_mon = {{1, 31}, {2, 28}, {3, 31}, {4, 30}, {5, 31}, {6, 30}, {7, 31}, {8, 31}, {9, 30}, {10, 31}, {11, 30}, {12, 31}};
+        return current_mon[current];
 }
 
-int main(int argc, char *argv[])
-{
-	map<int, vector<string>> calendar;
-	int curr_mon = 1;
-
-	string command;
-
-	int mon = next(curr_mon); // get current month
-	while (getline(cin, command))
-	{
-		if (command == "ex")
-		{
-			break;
+int main(){
+	std::string command, to_do;
+	Notes notes;
+	int Q, day, current_mon = 1;
+	std::cin >> Q;
+	for(size_t i = 0; i < Q; ++i){
+		std::cin >> command;
+		if(command == "ADD"){
+			std::cin >> day >> to_do;
+			if (day > 0 && day < next(current_mon)) { notes[day].insert(to_do); }
+			else { std::cout << "Неверно введен день: " << day << std::endl; continue; }
 		}
-    // add things to do for the month
-		if (command == "ADD")
-		{
-			string todo;
-			vector<string> days;
-			for (int i = 1; i <= mon; i++)
-			{
-				cout << "Задание " << mon << " " << i << ": ";
-				cin >> todo;
-				days.push_back(todo);
-			}
-			calendar.insert({curr_mon, days});
-			
+		if(command == "DUMP"){
+			std::cin >> day;
+			if (day < next(current_mon)) { for(const auto& el: notes[day]) { std::cout << el << std::endl; } }
+			else { std::cout << "Неверно введен день: " << day << std::endl; continue; }
 		}
-    // move to another month
-		else if (command == "NEXT")
-		{
-			cout << "Переход на другой месяц." << endl;
-			if (curr_mon != 12)
-			{
-				curr_mon++;
-			}
-			else
-			{
-				curr_mon = 1;
-				
-			}
-			mon = next(curr_mon);
-			
+		if(command == "NEXT"){
+			notes.clear();
+			current_mon++;
 		}
-    // get information on the day
-		else if (command == "DUMP")
-		{
-			int day;
-			cout << "Введите день: ";
-			cin >> day;
-			for (auto el : calendar)
-			{
-				try{
-				cout << el.second.at(day-1) << endl;
-				}catch(std::out_of_range &err){
-					
-				}
-			}
-		}
-		mon = next(curr_mon);
 	}
+	return 0;
 }
