@@ -1,93 +1,65 @@
 #include <iostream>
-#include <map>
 #include <vector>
-#include <cstdlib>
+#include <algorithm>
 
-using namespace std;
+enum State{ QUIET, WORRY }; // состояние
 
-void WORRY(map<int, string> &states)
-{
-	int people;
-	cout << "Какого человека обеспокоить: ";
-	cin >> people;
-	if (states.count(people))
-	{
-		states[people] = "worry";
-	}
-}
-void QUIET(map<int, string> &states)
-{
-	int people;
-	cout << "Какого человека успокоить: ";
-	cin >> people;
-	if (states.count(people))
-	{
-		states[people] = "quiet";
-	}
-}
-int WORRY_COUNT(map<int, string> &states)
-{
-	int count = 0;
-	for (auto [people, state] : states)
-	{
-		if (state == "worry")
-		{
-			count++;
-		}
-	}
-	return count;
+using Queue = std::vector<State>; // очередь(вектор)
+
+void Worry(Queue &queue){
+	int index;
+    std::cin >> index;
+    queue[index] = State::WORRY;
 }
 
-int main(int argc, char *argv[])
-{
-	map<int, string> states;
-	
-	string command;
-	int Q;
-	cout << "Сколько людей в очереди: ";
-	cin >> Q;
+void Quiet(Queue &queue){
+	int index;
+    std::cin >> index;
+    queue[index] = State::QUIET;
+}
 
-	for (int i = 0; i < Q; i++)
-	{
-		states[i] = "quiet";
-	}
-
-	while (getline(cin, command))
-	{
-		if (command == "ex")
-		{
-			break;
-		}
-		else if (command == "WORRY")
-		{
-			WORRY(states);
-		}
-		else if (command == "QUIET")
-		{
-			QUIET(states);
-		}
-		else if (command == "WORRY_COUNT")
-		{
-			cout << WORRY_COUNT(states) << endl;
-		}
-		else if (command == "COME")
-		{
-			int k;
-			cin >> k;
-			if (k > 0)
-			{
-				for(int i = Q-k; i<Q; ++i){
-					states[i]="queit";
-				}
-			}
-			else
-			{
-				map<int, string> new_states;
-				for(int i = 0; i < Q+k; i++){
-					new_states[i] = states[i];
-				}
-				states = new_states;
-			}
+void Come(Queue &queue){
+	int index, curr_index=0;
+    std::cin >> index;
+    if(index > 0){
+	    for (size_t i = 0; i < index; ++i){ queue.push_back(State::QUIET); }
+	    for (auto it = queue.begin(); it != queue.end(); ++it) {
+	        if (*it == State::QUIET) {
+	            queue.erase(it);
+	            --index;
+	            --it;
+	            
+	            if (index == 0) {
+	                break;
+	            }
+	        }
+	    }
+    }else{
+    	std::rotate(queue.begin(), queue.end()+index, queue.end());
     }
-	}
+}
+
+int WorryCount(Queue &queue){
+	return count(queue.begin(), queue.end(), State::WORRY);
+}
+
+int main(){
+        Queue queue;
+        std::string command;
+        int Q, k;
+        std::cout << "Сколько людей в очереди: ";
+        std::cin >> Q;
+        for (size_t i = 0; i < Q; ++i){ queue.push_back(State::QUIET); }
+        std::cout << "Сколько команд: ";
+        std::cin >> k;
+        for (size_t i = 0; i < k; ++i){
+        	std::cin >> command;
+        	if(command == "WORRY"){ Worry(queue); }
+        	if(command == "QUIET"){ Quiet(queue); }
+        	if(command == "COME"){ Come(queue); }
+        	if(command == "WORRY_COUNT"){ std::cout << WorryCount(queue) << std::endl; }
+        	for (size_t i = 0; i < queue.size(); ++i){ std::cout << queue[i] << " "; }
+        	std::cout << std::endl;
+        
+        }
 }
