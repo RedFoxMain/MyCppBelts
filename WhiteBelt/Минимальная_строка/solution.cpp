@@ -1,7 +1,6 @@
 #include <iostream>
 
-int main(int argc, char *argv[])
-{
+int main(){
         std::string word1, word2, word3;
         std::cin >> word1 >> word2 >> word3;
         
