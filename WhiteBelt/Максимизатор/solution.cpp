@@ -1,17 +1,12 @@
 #include <iostream>
 
-using namespace std;
-
-void UpdateIfGreater(int first, int &second){
-	if(first > second){
-		second = first;
-	}
+void UpdateIfGreater(int &first, int &second){
+	if(first > second) { second = first; }
 }
 
-int main(int argc, char *argv[])
-{
-	int first = 7;
-	int second = 3;
-	UpdateIfGreater(first, second);
-	cout << second;
+int main(){
+	int a=8, b=7;
+	UpdateIfGreater(a, b);
+	std::cout << a << std::endl;
+	std::cout << b << std::endl;
 }
