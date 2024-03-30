@@ -1,20 +1,17 @@
 #include <iostream>
 #include <vector>
 
-using namespace std;
-
-void MoveStrings(vector<string> &destinations, vector<string> &source){
-	destinations.insert(destinations.end(),source.begin(), source.end());
-	source.clear();
+void MoveStrings(std::vector<std::string> &destinations, std::vector<std::string> &source){
+        destinations.insert(destinations.end(), source.begin(), source.end());
+        source.clear();
 }
 
-int main(int argc, char *argv[])
-{
-	vector<string> source = {"banana","apple"};
-	vector<string> destinations = {"carrot"};
-	
-	MoveStrings(destinations, source);
-	
-	cout << destinations.size() << endl; // 3
-	cout << source.size() << endl; // 0
+int main(){
+        std::vector<std::string> source = {"banana","apple"};
+        std::vector<std::string> destinations = {"carrot"};
+
+        MoveStrings(destinations, source);
+
+        std::cout << destinations.size() << std::endl; // 3
+        std::cout << source.size() << std::endl; // 0
 }
