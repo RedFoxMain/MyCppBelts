@@ -1,46 +1,36 @@
 #include <iostream>
 
-using namespace std;
-
-struct Specialization
-{
-	string specialization;
-	Specialization(string specialization){
-		specialization = "";
-	}
+struct Specialization{
+public:
+	std::string specialization_;
+	explicit Specialization(std::string specialization): specialization_(specialization) {}
 };
 
-struct Course
-{
-	string course;
-	Course(string course){
-		course = "";
-	}
+struct Course{
+public:
+	std::string course_;
+	explicit Course(std::string course): course_(course) {}
 };
 
-struct Week
-{
-	string week;
-	Week(string week){
-		week = "";
-	}
+struct Week{
+public:
+	std::string week_;
+	explicit Week(std::string week): week_(week) {}
 };
 
-struct LectureTitle
-{
-	string specialization, course, week;
-	
-	LectureTitle(Specialization spec, Course course, Week week){
-		this->specialization = spec.specialization;
-		this->course = course.course;
-		this->week = week.week;
-	}
+struct LectureTitle {
+public:
+	Specialization spec_;
+	Course course_;
+	Week week_;
+	LectureTitle(Specialization spec, Course course, Week week):
+		spec_(spec), course_(course), week_(week) {}
 };
 
-int main(int argc, char *argv[])
-{
-	LectureTitle lec(
-	Specialization("c++"),
-	Course("white belt"),
-	Week("4th"));
+int main(){
+	LectureTitle title(
+		Specialization("C++"),
+		Course("White belt"),
+		Week("4th")
+	);
 }
