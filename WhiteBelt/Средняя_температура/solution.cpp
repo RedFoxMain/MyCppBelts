@@ -1,31 +1,28 @@
 #include <iostream>
 #include <map>
 
-using namespace std;
-
-void midTemp(map<int, int> temperature, int days){
+void midTemp(std::map<int, int> temperature, int days){
 	int sum = 0;
-	for(const auto [day, temp]: temperature){
+	for (const auto [day, temp] : temperature){
 		sum += temp;
 	}
-	int midValue = sum/days;
-	cout << "Среднее: " << midValue << endl;
-	cout << "Наибольшие: ";
-	for(const auto [day, temp]: temperature){
-		if(temp > midValue){
-			cout << temp << " ";
+	int midValue = sum / days;
+	std::cout << "Среднее: " << midValue << std::endl;
+	std::cout << "Наибольшие: ";
+	for (const auto [day, temp] : temperature){
+		if (temp > midValue){
+			std::cout << temp << " ";
 		}
 	}
 }
 
-int main(int argc, char *argv[])
-{
-	map<int, int> temperature;
+int main(){
+	std::map<int, int> temperature;
 	int days;
 	int temper;
-	cin >> days;
-	for(int i = 0; i<days; i++){
-		cin >> temper;
+	std::cin >> days;
+	for (int i = 0; i < days; i++){
+		std::cin >> temper;
 		temperature[i] = temper;
 	}
 	midTemp(temperature, days);
