@@ -1,7 +1,7 @@
 #include <iostream>
 #include <map>
 
-void midTemp(std::map<int, int> temperature, int days){
+void MidTemp(std::map<int, int> temperature, int days){
 	int sum = 0;
 	for (const auto [day, temp] : temperature){
 		sum += temp;
@@ -25,5 +25,5 @@ int main(){
 		std::cin >> temper;
 		temperature[i] = temper;
 	}
-	midTemp(temperature, days);
+	MidTemp(temperature, days);
 }
