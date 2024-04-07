@@ -1,17 +1,15 @@
 #include <algorithm>
 #include "sum_reverse_sort.h"
 
-using namespace std;
-
 int Sum(int x, int y){
-	return x+y;
+	return x + y;
 }
 
-string Reverse(string s){
-	reverse(s.begin(), s.end());
+std::string Reverse(std::string s){
+	std::reverse(s.begin(), s.end());
 	return s;
 }
 
-void Sort(vector<int>& nums){
-	sort(nums.begin(), nums.end());
+void Sort(std::vector<int> &nums){
+	std::sort(nums.begin(), nums.end());
 }
