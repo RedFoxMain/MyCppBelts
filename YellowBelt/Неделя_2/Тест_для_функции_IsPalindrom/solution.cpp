@@ -1,12 +1,11 @@
 #include <iostream>
 #include <sstream>
-using namespace std;
 
 class TestRunner{
   public:
 	template <typename A, typename B>
 	void AssertionEqual(A a, B b){
-		ostringstream os;
+		std::ostringstream os;
 		if (a != b){
 			os << a << " != " << b << " Тест: " << test;
 			throw std::runtime_error(os.str());
@@ -19,7 +18,7 @@ class TestRunner{
 };
 
 // функция для проверки на палиндром
-bool IsPalindrom(const string &str){
+bool IsPalindrom(const std::string &str){
 	bool answer = true;
 
 	if (str.size() != 0){
