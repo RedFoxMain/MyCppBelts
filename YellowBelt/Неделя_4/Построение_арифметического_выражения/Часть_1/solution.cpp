@@ -1,18 +1,15 @@
 #include <iostream>
 
-using namespace std;
-
-int main(int argc, char *argv[])
-{
-	string expr, operation;
+int main(){
+	std::string expr, operation;
 	int N, num;
-	cin >> expr;
-	cin >> N;
-	for(int i = 0; i < N; i++){
-		cin >> operation;
-		cin.ignore(1);
-		cin >> num;
-		expr = "(" + expr + ") " + operation + " " + to_string(num);
+	std::cin >> expr;
+	std::cin >> N;
+	for (int i = 0; i < N; i++){
+		std::cin >> operation;
+		std::cin.ignore(1);
+		std::cin >> num;
+		expr = "(" + expr + ")" + operation + "" + std::to_string(num);
 	}
-	cout << expr << endl;
+	std::cout << expr << std::endl;
 }
