@@ -10,7 +10,7 @@ int main(int argc, char *argv[]){
 	deq.push_back(expr);
 
 	std::cin >> N;
-	for (int i = 0; i < N; i++){
+	for (int i = 0; i < N; ++i){
 		std::cin >> operation;
 		std::cin.ignore(1);
 		switch (operation){
