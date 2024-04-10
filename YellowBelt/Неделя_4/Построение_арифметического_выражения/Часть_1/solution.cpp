@@ -5,7 +5,7 @@ int main(){
 	int N, num;
 	std::cin >> expr;
 	std::cin >> N;
-	for (int i = 0; i < N; i++){
+	for (size_t i = 0; i < N; ++i){
 		std::cin >> operation;
 		std::cin.ignore(1);
 		std::cin >> num;
