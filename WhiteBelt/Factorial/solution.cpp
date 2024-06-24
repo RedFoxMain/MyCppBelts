@@ -1,8 +1,7 @@
 #include <iostream>
 
 long factorial(int N){
-        if(N<=1){ return 1; }
-        return N*factorial(N-1);
+	return (N <= 1)? 1 : N*factorial(N-1);
 }
 
 int main(){
