@@ -1,59 +1,26 @@
 #include <iostream>
-#include <vector>
 #include <fstream>
-using namespace std;
+#include <vector>
 
-void readFile(string &text, ifstream &file)
-{
-	string lines;
-	getline(file, text);
-	while (getline(file, lines))
-	{
-		text += lines + '\n';
-	}
-}
-
-vector<vector<char>> makeVector(string text, int col)
-{
-	vector<vector<char>> data;
-	vector<char> lines;
-	for (int i = 0; i < text.length(); i++)
-	{
-		if (text[i] != ',')
-		{
-			if (lines.size() != col)
-			{
-				lines.push_back(text[i]);
-			}
-			else
-			{
-				data.push_back(lines);
-				lines.clear();
-			}
-		}
-	}
-	return data;
-}
-
-int main(int argc, char *argv[])
-{
-	string text;
-	int row, col;
-	ifstream file("test1.txt");
-
-	file >> row;
-	file.ignore(1, ' ');
-	file >> col;
-
-	readFile(text, file);
-
-	for (auto vec : makeVector(text, col))
-	{
-		for (auto el : vec)
-		{
-			cout << el << " ";
-		}
-
-		cout << endl;
-	}
+int main(){
+    std::ifstream file("test.txt"); // Читаем файл
+    int row, col;
+    std::string num;
+    std::vector<std::vector<int>> matrix; // Таблица данных
+    std::vector<int> line;
+    if(file.is_open()){
+    	file >> row >> col; // Записываем значение row и col
+    	while(matrix.size() != row){ 
+    		file >> num; // Читаем остальное
+    		if(line.size() != col){ line.push_back(std::stoi(num)); }
+    		else{ matrix.push_back(line); line.clear(); line.push_back(std::stoi(num)); }
+    	}
+    }
+    // Вывод матрицы на печать
+    for(int i=0; i < matrix.size(); ++i){
+    	for(int j=0; j < matrix[i].size(); ++j){
+    		printf("%i\t", matrix[i][j]);
+    	}
+    	std::cout << "\n";
+    }
 }
