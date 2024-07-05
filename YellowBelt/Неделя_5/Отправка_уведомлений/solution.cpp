@@ -1,52 +1,50 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
-
-void SendSms(const string& number, const string& message) {
-    cout << "Send '" << message << "' to number " << number << endl;
+void SendSms(const std::string &number, const std::string &message) {
+    std::cout << "Send '" << message << "' to number " << number << std::endl;
 }
 
-void SendEmail(const string& email, const string& message) {
-    cout << "Send '" << message << "' to e-mail "  << email << endl;
+void SendEmail(const std::string &email, const std::string &message) {
+    std::cout << "Send '" << message << "' to e-mail "  << email << std::endl;
 }
 
 // абстрактный класс
 class INotifier{
 public:
-	virtual void Notify(const string& message){}
+        virtual void Notify(const std::string &message){}
 };
 
 // SmsNotifier
 class SmsNotifier: public INotifier{
 public:
-	SmsNotifier(string phone): phone_(phone){
-	}
-	
-	void Notify(const string& message){
-		SendSms(phone_, message);
-	}
-	
+        SmsNotifier(std::string phone): _phone(phone){
+        }
+
+        void Notify(const std::string &message){
+                SendSms(_phone, message);
+        }
+
 private:
-	string phone_;
+        std::string _phone;
 };
 
 // EmailNotifier
 class EmailNotifier: public INotifier{
 public:
-	EmailNotifier(string address): address_(address){
-	}
-	void Notify(const string& message){
-		SendEmail(address_, message);
-	}
-	
+        EmailNotifier(std::string address): _address(address){
+        }
+        void Notify(const std::string &message){
+                SendEmail(_address, message);
+        }
+
 private:
-	string address_;
+        std::string _address;
 };
 
 // Notify method
-void Notify(INotifier& notifier, const string& message) {
-	notifier.Notify(message);
+void Notify(INotifier &notifier, const std::string &message) {
+        notifier.Notify(message);
 }
 
 int main() {
