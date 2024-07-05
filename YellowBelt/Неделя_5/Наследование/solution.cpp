@@ -1,26 +1,22 @@
 #include <iostream>
-
-using namespace std;
+#include <string>
 
 class Animal {
 public:
-    // ваш код
-	Animal(string name): Name(name){}
-    const string Name;
+    Animal(std::string name): Name(name){}
+    const std::string Name;
 };
-
 
 class Dog: public Animal {
 public:
     // ваш код
-	Dog(string name = "Dog"): Animal(name){
-	   
-	} 
+    Dog(std::string name = "Dog"): Animal(name){} 
     void Bark() {
-        cout << Name << " barks: woof!" << endl;
+        std::cout << Name << " barks: woof!" << std::endl;
     }
 };
+
 int main(){
-	Dog d;
-	d.Bark();
+        Dog d;
+        d.Bark();
 }
