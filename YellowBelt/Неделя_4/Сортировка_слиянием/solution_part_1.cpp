@@ -1,30 +1,29 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-using namespace std;
 
 template <typename RandomIt>
 void MergeSort(RandomIt range_begin, RandomIt range_end){
-	int size_of_vector = range_end-range_begin;
-	if(size_of_vector < 2){
-		return;
-	}else{
-		vector<typename RandomIt::value_type> vec(range_begin, range_end);
+        int size_of_vector = range_end-range_begin;
+        if(size_of_vector < 2){
+                return;
+        }else{
+                std::vector<typename RandomIt::value_type> vec(range_begin, range_end);
 
-		RandomIt mid = begin(vec) + size_of_vector/2;
-		MergeSort(begin(vec), mid);
-		MergeSort(mid, end(vec));
-		
-		merge(begin(vec), mid, mid, end(vec), range_begin);
-	}
+                RandomIt mid = std::begin(vec) + size_of_vector/2;
+                MergeSort(std::begin(vec), mid);
+                MergeSort(mid, std::end(vec));
+
+                merge(std::begin(vec), mid, mid, std::end(vec), range_begin);
+        }
 }
 
-int main(int argc, char *argv[]){
-	vector<int> v = {6, 4, 7, 6, 4, 4, 0, 1};
-    MergeSort(begin(v), end(v));
+int main(){
+    std::vector<int> v = {6, 4, 7, 6, 4, 4, 0, 1};
+    MergeSort(std::begin(v), std::end(v));
     for (int x : v) {
-      cout << x << " ";
+      std::cout << x << " ";
     }
-    cout << endl;
+    std::cout << std::endl;
     return 0;
 }
