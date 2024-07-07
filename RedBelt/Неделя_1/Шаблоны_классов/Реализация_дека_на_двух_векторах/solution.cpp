@@ -2,12 +2,11 @@
 #include <iostream>
 #include <stdexcept>
 #include <vector>
-using namespace std;
 
 template<typename T>
 class Deque{
 public:
-        Deque(){} // Дефолтный конструктор
+        Deque() = default; // Дефолтный конструктор
         bool Empty() const{ // Пуста ли очередь
                 return front_part.empty() || back_part.empty();
         }
@@ -23,7 +22,7 @@ public:
         // At
         T& At(size_t index){ // Получить элемент по индексу
                 if(index >= front_part.size()+back_part.size()){
-                        throw out_of_range("Большой индекс");
+                        throw std::out_of_range("Большой индекс");
               }
                 if(index < front_part.size()){
                         return front_part[front_part.size()-index];
@@ -33,7 +32,7 @@ public:
         }
         const T& At(size_t index) const{
                 if(index >= front_part.size()+back_part.size()){
-                        throw out_of_range("Большой индекс");
+                        throw std::out_of_range("Большой индекс");
                 }
                 if(index < front_part.size()){
                         return front_part[front_part.size()-index];
@@ -58,18 +57,18 @@ public:
         T& operator[](size_t index){
            if (index < front_part.size()) {
               return front_part[front_part.size() - 1 - index];
-       }
-       return back_part[index - front_part.size()];
+           }
+       	return back_part[index - front_part.size()];
         }
         const T& operator[](size_t index) const{
             if (index < front_part.size()) {
               return front_part[front_part.size() - 1 - index];
-        }
-        return front_part[index - front_part.size()];
+       	 }
+       	 return front_part[index - front_part.size()];
         }
 private:
-        vector<T> front_part;
-        vector<T> back_part;
+        std::vector<T> front_part;
+        std::vector<T> back_part;
 };
 
 int main(){
@@ -78,9 +77,9 @@ int main(){
         deq.PushFront(2);
         deq.PushBack(3);
         deq.PushFront(8);
-        cout << "Empty: " << deq.Empty() << endl;
-        cout << "Size: " << deq.Size() << endl;
-        cout << "Элемент: " << deq.At(2) << endl;
-        cout << "Первый: " << deq.Front() << endl;
-        cout << "Последний: " << deq.Back() << endl;
+        std::cout << "Empty: " << deq.Empty() << std::endl;
+        std::cout << "Size: " << deq.Size() << std::endl;
+        std::cout << "Элемент: " << deq.At(2) << std::endl;
+        std::cout << "Первый: " << deq.Front() << std::endl;
+        std::cout << "Последний: " << deq.Back() << std::endl;
 }
