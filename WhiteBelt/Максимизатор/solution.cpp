@@ -1,6 +1,6 @@
 #include <iostream>
 
-void UpdateIfGreater(int &first, int &second){
+void UpdateIfGreater(int first, int &second){
 	if(first > second) { second = first; }
 }
 
