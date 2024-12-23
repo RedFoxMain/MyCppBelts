@@ -3,6 +3,7 @@
 #include <sstream>
 #include <cmath>
 #include <iomanip>
+#include <memory>
 
 // Основной класс для фигур
 class Figure{
@@ -15,55 +16,55 @@ public:
 // клас треугольник
 class Triangle: public Figure{
 private:
-        std::string _shape;
-        int _a, _b, _c;
+        std::string shape_;
+        int a_, b_, c_;
 public:
-        Triangle(std::string shape, int a, int b, int c): _shape(shape), _a(a), _b(b), _c(c) {}
+        Triangle(std::string shape, int a, int b, int c): shape_(shape), a_(a), b_(b), c_(c) {}
         std::string Name() override {
-                return _shape;
+                return shape_;
         }
         float Area() override {
-                float perimeter = (_a+_b+_c)/2;
-                return sqrt(perimeter*(perimeter - _a)*(perimeter - _b)*(perimeter - _c));
+                float perimeter = (a_+b_+c_)/2;
+                return sqrt(perimeter*(perimeter - a_)*(perimeter - b_)*(perimeter - c_));
         }
         float Perimeter() override{
-                return float(_a)+float(_b)+float(_c);
+                return float(a_)+float(b_)+float(c_);
         }
 };
 
 // класс круг
 class Circle: public Figure{
 private:
-        std::string _shape;
-        int _r;
+        std::string shape_;
+        int r_;
 public:
-        Circle(std::string shape, int r): _shape(shape), _r(r){}
+        Circle(std::string shape, int r): shape_(shape), r_(r){}
         std::string Name() override {
-                return _shape;
+                return shape_;
         }
         float Area() override {
-                return 3.14*pow(_r,2);
+                return 3.14*pow(r_,2);
         }
         float Perimeter() override{
-                return 2*3.14*_r;
+                return 2*3.14*r_;
         }
 };
 
 // класс прямоугольник
 class Rect: public Figure{
 private:
-        std::string _shape;
-        int _width, _heigth;
+        std::string shape_;
+        int width_, heigth_;
 public:
-        Rect(std::string shape, int width, int heigth): _shape(shape), _width(width), _heigth(heigth){}
+        Rect(std::string shape, int width, int heigth): shape_(shape), width_(width), heigth_(heigth){}
         std::string Name() override {
-                return _shape;
+                return shape_;
         }
         float Area() override {
-                return float(_width)*float(_heigth);
+                return float(width_)*float(heigth_);
         }
         float Perimeter() override{
-                return 2*(float(_width) + float(_heigth));
+                return 2*(float(width_) + float(heigth_));
         }
 };
 
