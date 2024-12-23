@@ -32,14 +32,14 @@ private:
 // EmailNotifier
 class EmailNotifier: public INotifier{
 public:
-        EmailNotifier(std::string address): _address(address){
+        EmailNotifier(std::string address): address_(address){
         }
         void Notify(const std::string &message){
-                SendEmail(_address, message);
+                SendEmail(address_, message);
         }
 
 private:
-        std::string _address;
+        std::string address_;
 };
 
 // Notify method
