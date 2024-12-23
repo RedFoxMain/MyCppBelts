@@ -22,11 +22,11 @@ public:
         }
 
         void Notify(const std::string &message){
-                SendSms(_phone, message);
+                SendSms(phone_, message);
         }
 
 private:
-        std::string _phone;
+        std::string phone_;
 };
 
 // EmailNotifier
