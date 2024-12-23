@@ -7,7 +7,6 @@ int NOD(int a, int b){
 	}
 	return c;
 }
-int main(int argc, char *argv[])
-{
+int main(){
 	std::cout << NOD(100,3);
 }
